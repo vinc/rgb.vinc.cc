@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="colorApp">
+<html lang="en" ng-app="rgbApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +16,7 @@
       <script src="https<span class="sep">:</span>//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-controller="ColorController" ng-keydown="keydown($event)" style="color:{{fg()}};background:{{bg()}}">
+  <body ng-controller="RGBController" ng-keydown="keydown($event)" style="color:{{fg()}};background:{{bg()}}">
     <div class="container">
       #<span ng-class="i == 0 ? 'active' : ''">{{rgb[0]}}</span><span ng-class="i == 1 ? 'active' : ''">{{rgb[1]}}</span><span ng-class="i == 2 ? 'active' : ''">{{rgb[2]}}</span>
     </div>

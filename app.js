@@ -1,5 +1,5 @@
-angular.module('colorApp', [])
-  .controller('ColorController', ['$scope', function($scope) {
+angular.module('rgbApp', [])
+  .controller('RGBController', ['$scope', function($scope) {
     $scope.rgb = ['0', '0', '0'];
     $scope.i = 0;
 
