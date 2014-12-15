@@ -24,7 +24,7 @@ angular.module('rgbApp', [])
         return r + parseInt(c, 16);
       }, 0) / 3;
 
-      return hue > 8 ? 'black' : 'white';
+      return hue > 8 ? '#333' : '#eee';
     };
 
     function up() {
