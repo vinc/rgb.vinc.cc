@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="colorApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RGB Color Picker</title>
+
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <link href="/app.css" rel="stylesheet">
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/app.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https<span class="sep">:</span>//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https<span class="sep">:</span>//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="ColorController" ng-keydown="keydown($event)" style="color:{{fg()}};background:{{bg()}}">
+    <div class="container">
+      #<span ng-class="i == 0 ? 'active' : ''">{{rgb[0]}}</span><span ng-class="i == 1 ? 'active' : ''">{{rgb[1]}}</span><span ng-class="i == 2 ? 'active' : ''">{{rgb[2]}}</span>
+    </div>
+  </body>
+</html>
