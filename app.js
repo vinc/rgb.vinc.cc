@@ -1,12 +1,18 @@
 angular.module('rgbApp', [])
-  .controller('RGBController', ['$scope', function($scope) {
+  .controller('RGBController', ['$scope', '$location', function($scope, $location) {
     $scope.i = 0;
+
     $scope.rgb = ['0', '0', '0'];
 
-    $scope.rand = function() {
-      $scope.rgb = $scope.rgb.map(function(c) {
-        return Math.floor(Math.random() * (16)).toString(16);
-      });
+    $scope.keydown = function(e) {
+      switch(e.keyCode) {
+        case 13: rand(); break;
+        case 32: rand(); break;
+        case 37: left(); break;
+        case 38: up(); break;
+        case 39: right(); break;
+        case 40: down(); break;
+      }
     };
 
     $scope.bg = function() {
@@ -21,32 +27,38 @@ angular.module('rgbApp', [])
       return hue > 8 ? 'black' : 'white';
     };
 
-    $scope.up = function() {
+    function up() {
       $scope.rgb[$scope.i] = ((parseInt($scope.rgb[$scope.i], 16) + 1) % 16).toString(16);
-    };
+      replaceHash();
+    }
 
-    $scope.down = function() {
+    function down() {
       $scope.rgb[$scope.i] = ((parseInt($scope.rgb[$scope.i], 16) + 15) % 16).toString(16);
-    };
+      replaceHash();
+    }
 
-    $scope.right = function() {
+    function right() {
       $scope.i = ($scope.i + 1) % 3;
     };
 
-    $scope.left = function() {
+    function left() {
       $scope.i = ($scope.i + 2) % 3;
     };
 
-    $scope.keydown = function(e) {
-      switch(e.keyCode) {
-        case 13: $scope.rand(); break;
-        case 32: $scope.rand(); break;
-        case 37: $scope.left(); break;
-        case 38: $scope.up(); break;
-        case 39: $scope.right(); break;
-        case 40: $scope.down(); break;
-      }
-    };
+    function replaceHash() {
+      $location.path($scope.rgb.join('').toUpperCase()).replace();
+    }
 
-    $scope.rand();
+    function rand() {
+      $scope.rgb = $scope.rgb.map(function(c) {
+        return Math.floor(Math.random() * (16)).toString(16);
+      });
+      replaceHash();
+    }
+
+    if ($location.path() === '') {
+      rand();
+    } else {
+      $scope.rgb = $location.path().slice(1, 4).split('');
+    }
   }]);
