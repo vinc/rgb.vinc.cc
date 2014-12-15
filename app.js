@@ -1,7 +1,13 @@
 angular.module('rgbApp', [])
   .controller('RGBController', ['$scope', function($scope) {
-    $scope.rgb = ['0', '0', '0'];
     $scope.i = 0;
+    $scope.rgb = ['0', '0', '0'];
+
+    $scope.rand = function() {
+      $scope.rgb = $scope.rgb.map(function(c) {
+        return Math.floor(Math.random() * (16)).toString(16);
+      });
+    };
 
     $scope.bg = function() {
       return '#' + $scope.rgb.join('').toUpperCase();
@@ -33,10 +39,14 @@ angular.module('rgbApp', [])
 
     $scope.keydown = function(e) {
       switch(e.keyCode) {
+        case 13: $scope.rand(); break;
+        case 32: $scope.rand(); break;
         case 37: $scope.left(); break;
         case 38: $scope.up(); break;
         case 39: $scope.right(); break;
         case 40: $scope.down(); break;
       }
     };
+
+    $scope.rand();
   }]);
