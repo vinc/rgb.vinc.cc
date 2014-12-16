@@ -6,12 +6,41 @@ angular.module('rgbApp', [])
 
     $scope.keydown = function(e) {
       switch(e.keyCode) {
-        case 13: rand(); break;
-        case 32: rand(); break;
-        case 37: left(); break;
-        case 38: up(); break;
-        case 39: right(); break;
-        case 40: down(); break;
+      case 13:
+      case 32:
+        rand();
+        break;
+      case 37:
+        left();
+        break;
+      case 38:
+        up();
+        break;
+      case 39:
+        right();
+        break;
+      case 40:
+        down();
+        break;
+      case 48:
+      case 49:
+      case 50:
+      case 51:
+      case 52:
+      case 53:
+      case 54:
+      case 55:
+      case 56:
+      case 57:
+      case 65:
+      case 66:
+      case 67:
+      case 68:
+      case 69:
+      case 70:
+        $scope.rgb[$scope.i] = String.fromCharCode(e.keyCode);
+        right();
+        break;
       }
     };
 
