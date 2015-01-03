@@ -1,10 +1,12 @@
 angular.module('rgbApp', [])
   .controller('RGBController', ['$scope', '$location', function($scope, $location) {
+    $scope.help = true;
     $scope.i = 0;
 
     $scope.rgb = ['0', '0', '0'];
 
     $scope.keydown = function(e) {
+      $scope.help = false;
       switch(e.keyCode) {
       case 13:
       case 32:

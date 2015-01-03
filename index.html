@@ -18,7 +18,8 @@
   </head>
   <body ng-controller="RGBController" ng-keydown="keydown($event)" ng-cloak style="color:{{fg()}};background:{{bg()}}">
     <div class="container">
-      #<span ng-class="i == 0 ? 'active' : ''">{{rgb[0]}}</span><span ng-class="i == 1 ? 'active' : ''">{{rgb[1]}}</span><span ng-class="i == 2 ? 'active' : ''">{{rgb[2]}}</span>
+      <div class="code">#<span ng-class="i == 0 ? 'active' : ''">{{rgb[0]}}</span><span ng-class="i == 1 ? 'active' : ''">{{rgb[1]}}</span><span ng-class="i == 2 ? 'active' : ''">{{rgb[2]}}</span></div>
+      <div class="help" ng-show="help">Use the arrow keys or the space bar to change the color.<div>
     </div>
   </body>
 </html>

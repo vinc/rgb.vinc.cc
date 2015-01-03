@@ -4,12 +4,10 @@ html {
 body {
   display: table;
   font-family: "Droid Sans Mono", monospace;
-  font-size: 12vw;
   height: 100%;
   margin: 0;
   padding: 0;
   text-align: center;
-  text-transform: uppercase;
   width: 100%;
 }
 .container {
@@ -18,4 +16,13 @@ body {
 }
 .active {
   text-decoration: underline;
+}
+.code {
+  font-size: 12vw;
+  text-transform: uppercase;
+}
+.help {
+  bottom: 2em;
+  position: absolute;
+  width: 100%;
 }
