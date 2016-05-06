@@ -1,8 +1,8 @@
 angular.module('rgbApp', [])
   .controller('RGBController', ['$scope', '$location', function($scope, $location) {
+
     $scope.help = true;
     $scope.i = 0;
-
     $scope.rgb = ['0', '0', '0'];
 
     $scope.keydown = function(e) {
@@ -87,9 +87,15 @@ angular.module('rgbApp', [])
       replaceHash();
     }
 
-    if ($location.path() === '') {
-      rand();
-    } else {
-      $scope.rgb = $location.path().slice(1, 4).split('');
+    function load() {
+      if ($location.path() === '') {
+        rand();
+      } else {
+        $scope.rgb = $location.path().slice(1, 4).split('');
+      }
     }
+
+    $scope.$on('$locationChangeSuccess', function() {
+      load();
+    });
   }]);
