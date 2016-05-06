@@ -10,19 +10,19 @@ angular.module('rgbApp', [])
       switch(e.keyCode) {
       case 13:
       case 32:
-        rand();
+        $scope.rand();
         break;
       case 37:
-        left();
+        $scope.left();
         break;
       case 38:
-        up();
+        $scope.up();
         break;
       case 39:
-        right();
+        $scope.right();
         break;
       case 40:
-        down();
+        $scope.down();
         break;
       case 48:
       case 49:
@@ -58,36 +58,36 @@ angular.module('rgbApp', [])
       return hue > 8 ? '#333' : '#eee';
     };
 
-    function up() {
+    $scope.up = function() {
       $scope.rgb[$scope.i] = ((parseInt($scope.rgb[$scope.i], 16) + 1) % 16).toString(16);
       updateLocation();
     }
 
-    function down() {
+    $scope.down = function() {
       $scope.rgb[$scope.i] = ((parseInt($scope.rgb[$scope.i], 16) + 15) % 16).toString(16);
       updateLocation();
     }
 
-    function right() {
+    $scope.right = function() {
       $scope.i = ($scope.i + 1) % 3;
     };
 
-    function left() {
+    $scope.left = function() {
       $scope.i = ($scope.i + 2) % 3;
     };
 
-    function updateLocation() {
-      $location.path($scope.rgb.join('').toUpperCase()).replace();
-    }
-
-    function rand() {
+    $scope.rand = function() {
       $scope.rgb = $scope.rgb.map(function(c) {
         return Math.floor(Math.random() * (16)).toString(16);
       });
       updateLocation();
     }
 
-    function load() {
+    function updateLocation() {
+      $location.path($scope.rgb.join('').toUpperCase()).replace();
+    }
+
+    function loadLocation() {
       if ($location.path() === '') {
         rand();
       } else {
@@ -96,6 +96,6 @@ angular.module('rgbApp', [])
     }
 
     $scope.$on('$locationChangeSuccess', function() {
-      load();
+      loadLocation();
     });
   }]);
