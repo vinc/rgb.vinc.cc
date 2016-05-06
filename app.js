@@ -60,12 +60,12 @@ angular.module('rgbApp', [])
 
     function up() {
       $scope.rgb[$scope.i] = ((parseInt($scope.rgb[$scope.i], 16) + 1) % 16).toString(16);
-      replaceHash();
+      updateLocation();
     }
 
     function down() {
       $scope.rgb[$scope.i] = ((parseInt($scope.rgb[$scope.i], 16) + 15) % 16).toString(16);
-      replaceHash();
+      updateLocation();
     }
 
     function right() {
@@ -76,7 +76,7 @@ angular.module('rgbApp', [])
       $scope.i = ($scope.i + 2) % 3;
     };
 
-    function replaceHash() {
+    function updateLocation() {
       $location.path($scope.rgb.join('').toUpperCase()).replace();
     }
 
@@ -84,7 +84,7 @@ angular.module('rgbApp', [])
       $scope.rgb = $scope.rgb.map(function(c) {
         return Math.floor(Math.random() * (16)).toString(16);
       });
-      replaceHash();
+      updateLocation();
     }
 
     function load() {
