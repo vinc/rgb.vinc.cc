@@ -41,7 +41,7 @@ angular.module('rgbApp', [])
       case 69:
       case 70:
         $scope.rgb[$scope.i] = String.fromCharCode(e.keyCode);
-        right();
+        $scope.right();
         break;
       }
     };
@@ -89,7 +89,7 @@ angular.module('rgbApp', [])
 
     function loadLocation() {
       if ($location.path() === '') {
-        rand();
+        $scope.rand();
       } else {
         $scope.rgb = $location.path().slice(1, 4).split('');
       }
